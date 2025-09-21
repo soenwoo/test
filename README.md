@@ -40,7 +40,7 @@ The dataset was generated from field-scale experiments assessing rhizosphere mic
 #### **soil_physicochemical**  
 - **Files**: `total_soil_1st.csv`, `total_soil_2nd.csv`  
 - **Description**: Soil physicochemical properties measured at 1st and 2nd sampling events.  
-- **Columns**: Crop type, site ID, treatment (control/treatment), replicate, and soil physicochemical variables (`pH`, `EC`, `OM`, `P₂O₅`, `NO₃⁻-N`, `K`, `Ca`, `Mg`, `Na`).  
+- **Columns**: Crop type, site ID, treatment (control/treatment), replicate, and soil physicochemical variables (`pH`, `EC`, `OM`, `P2~O5~`,`NO3~-N`,`K`, `Ca`, `Mg`, `Na`)
 
 ---
 
@@ -51,7 +51,7 @@ These R scripts were used to generate the figures presented in the paper.
 ### **Preprocessing**
 - **Integrated_preprocessing_rhizosphere_data.R**  
   - Must be run before all analyses  
-  - Generates outputs: `alpha.csv`, `phylum_RA.csv`, DESeq2 inputs, `beta_diversity_distance.csv`  
+  - Generates outputs: `alpha.csv`, `phylum_RA.csv`, `DESeq2_results.csv`, `beta_diversity_distance.csv`  
 
 ### **Figure 1**
 - **Fig_1_IAA_production_bar_plot.R**  
