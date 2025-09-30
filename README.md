@@ -4,8 +4,8 @@
 This repository contains processed **16S rRNA gene (V3–V4) sequencing data**, **soil physicochemical measurements**, and **IAA production data**, along with **R scripts for downstream analysis**.  
 The dataset was generated from field-scale experiments assessing rhizosphere microbial communities under *Rhodobacter capsulatus* treatment.
 
-- **Title**: Rhizosphere microbiome responses to plant growth-promoting bacteria (PGPB) treatment in leafy vegetable farms  
-- **Authors**: Seonwoo Choi, Jin Young Kim, Ji-Young Moon, and Junhyun Jeon  
+- **Title**: A multi-farm dataset on plant growth-promoting bacteria and rhizosphere microbiomes 
+- **Authors**: Seonwoo Choi, Ji-Young Moon, Jin Young Kim, Min Kyu Kong, and Junhyun Jeon  
 
 ---
 
@@ -40,7 +40,7 @@ The dataset was generated from field-scale experiments assessing rhizosphere mic
 #### **soil_physicochemical**  
 - **Files**: `total_soil_1st.csv`, `total_soil_2nd.csv`  
 - **Description**: Soil physicochemical properties measured at 1st and 2nd sampling events.  
-- **Columns**: Crop type, site ID, treatment (control/treatment), replicate, and soil physicochemical variables (`pH`, `EC`, `OM`, `P<sub>2</sub>O<sub>5</sub>`,`NO<sub>3</sub>-N`,`K`, `Ca`, `Mg`, `Na`)
+- **Columns**: Crop type, site ID, treatment (control/treatment), replicate, and soil physicochemical variables (pH, EC, OM, P<sub>2</sub>O<sub>5</sub>,NO<sub>3</sub>-N, K, Ca, Mg, Na)
 
 ---
 
@@ -58,6 +58,37 @@ These R scripts were used to generate the figures presented in the paper.
   - Visualizes IAA production of *Rhodobacter* isolates  
   - Bar plots with error bars and threshold line  
 
+### **Figure 3**
+- **Fig_3_read_q-score.R**  
+  - Evaluates sequencing read quality across all FASTQ files.  
+  - Uses **ShortRead** to read FASTQ/FASTQ.GZ files and compute mean Q-scores for each read.  
+  - Aggregates Q-score data from all crops/farms (subfolders under `Q-mean`).  
+  - Generates a density plot showing the distribution of mean Q-scores across samples, grouped by crop type.  
+  - Output: `mean_qscore_all_reads.png` (high-resolution density plot with Q-score distributions).  
+
+**Data requirement**:  
+  - Raw sequencing data are **not included in this repository** due to large file sizes.  
+  - Data can be downloaded from the NCBI Sequence Read Archive (SRA) under accession number **[PRJNA1332407](https://www.ncbi.nlm.nih.gov/sra/?term=PRJNA1332407)**.  
+
+**Directory structure**:  
+  - Create a main directory named `Q-mean`.  
+  - Inside `Q-mean`, create subfolders for each crop (e.g., `kale`, `mallow`, `green_lettuce`, `red_lettuce`, `romaine`).  
+  - Place the corresponding FASTQ/FASTQ.GZ files into each folder.
+    ```bash
+    # Directory structure example
+    Q-mean/
+    ├── kale/
+    │ ├── kale_sample1.fastq.gz
+    │ ├── kale_sample2.fastq.gz
+    ├── mallow/
+    │ ├── mallow_sample1.fastq.gz
+    ├── green_lettuce/
+    │ ├── green_lettuce_sample1.fastq.gz
+    ├── red_lettuce/
+    │ ├── red_lettuce_sample1.fastq.gz
+    ├── romaine/
+    │ ├── romaine_sample1.fastq.gz
+    ```
 ### **Figure 4**
 - **Fig_4a_Relative_abundance_kale.R**  
   - Stacked bar plots of phylum-level relative abundance  
